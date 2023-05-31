@@ -4,11 +4,17 @@ from tkinter import ttk
 import pandas as pd
 import numpy as np
 from pandastable import Table, TableModel
-from github import Github
+import os
+
+#gets your current directory
+dirname = os.path.dirname(__file__)
+
+#concatenates your current directory with your desired subdirectory
+results = os.path.join(dirname, r'Super Smash Bros. Ultimate Patch 13.1 Frame Data.xlsx')
 
 global final
 # Creates a variable with the Excel file's directory in the computer
-xls = pd.ExcelFile('Super Smash Bros. Ultimate Patch 13.1 Frame Data.xlsx')
+xls = pd.ExcelFile(results)
 # Gets the names of all the sheets in the excel and stores them in a variable as a list
 names = xls.sheet_names
 
