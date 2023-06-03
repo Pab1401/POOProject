@@ -46,14 +46,14 @@ class demo(Tk):
         self.frame.grid(row = 0, column = 0, sticky = "nswe")
         self.sheet.grid(row = 0, column = 0, sticky = "nswe")
         
-        self.sheet.headers(newheaders = ['Startup','Shieldstun', 'Landing Lag', 'Base Damage', 'Shieldlag', 'Shieldstun'])
+        self.sheet.headers(newheaders = ['Startup','Total Frames', 'Landing Lag', 'Base Damage', 'Shieldlag', 'Shieldstun'])
         self.sheet.row_index(newindex = indexData)
 
 # Function to get the data frame from the selected character
 def retrieve_input():
     input = menu.get() # Gets the text from the stringvar menu which was selected in the dropdown menu
     sheet = pd.read_excel(xls, sheet_name=input, index_col=0) # adds the sheet from the selected character to a variable by using the name of the sheet
-    ColumnData = pd.DataFrame(sheet, columns=['Startup','Shieldstun', 'Landing Lag', 'Base Damage', 'Shieldlag', 'Shieldstun']) # Filters data in the original excel sheet to have only the desired information
+    ColumnData = pd.DataFrame(sheet, columns=['Startup','Total Frames', 'Landing Lag', 'Base Damage', 'Shieldlag', 'Shieldstun']) # Filters data in the original excel sheet to have only the desired information
     ColumnData.fillna(" ", inplace=True) # replaces all 'Na' values with '-'
     global indexData # creates a global variable indexData
     indexData = sheet.index.tolist() # transforms the index of the sheet into a list for later use in tk sheet
